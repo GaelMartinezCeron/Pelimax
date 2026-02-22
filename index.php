@@ -31,19 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: menu.php");
         exit();
     } else {
-        // PASO 2: Si no es admin, buscar si es un CLIENTE
-        $sql_cliente = "SELECT * FROM clientes WHERE correo = '$usuario' AND password = '$password' AND estatus = 1";
-        $result_cliente = $con->query($sql_cliente);
-
-        if ($result_cliente->num_rows > 0) {
-            $row = $result_cliente->fetch_assoc();
-            $_SESSION['cliente_id'] = $row['id'];
-            $_SESSION['cliente_nombre'] = $row['nombre'];
-            header("Location: catalogo.php");
-            exit();
-        } else {
+      
             $error = "Usuario o contraseña incorrectos.";
-        }
+        
     }
 }
 ?>

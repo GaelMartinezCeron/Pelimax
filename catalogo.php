@@ -47,7 +47,7 @@ function convertirAEmbed($url) {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Golden Cinema - Catálogo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
@@ -65,6 +65,8 @@ function convertirAEmbed($url) {
             background: linear-gradient(135deg, #0a0f1e 0%, #1a1f2e 100%);
             color: #fff;
             min-height: 100vh;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         /* ===== NAVBAR PREMIUM ===== */
@@ -76,25 +78,37 @@ function convertirAEmbed($url) {
             position: sticky;
             top: 0;
             z-index: 1000;
+            width: 100%;
         }
 
         .navbar-container {
+            width: 100%;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 15px;
         }
 
         .navbar-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            height: 80px;
+            min-height: 70px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 992px) {
+            .navbar-content {
+                flex-direction: column;
+                padding: 15px 0;
+                gap: 15px;
+            }
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .logo-icon {
@@ -118,18 +132,49 @@ function convertirAEmbed($url) {
             -webkit-text-fill-color: transparent;
         }
 
+        @media (max-width: 480px) {
+            .logo-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2rem;
+            }
+            
+            .logo-text {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 1rem;
+            }
+            
+            .logo-text {
+                font-size: 1rem;
+            }
+        }
+
         .search-box {
             flex: 0 1 400px;
         }
 
+        @media (max-width: 992px) {
+            .search-box {
+                width: 100%;
+                flex: none;
+            }
+        }
+
         .search-input {
             width: 100%;
-            padding: 12px 20px;
+            padding: 10px 16px;
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(212, 175, 55, 0.3);
             border-radius: 40px;
             color: #fff;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
@@ -144,17 +189,40 @@ function convertirAEmbed($url) {
             color: #8a909e;
         }
 
+        @media (max-width: 480px) {
+            .search-input {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+        }
+
         .user-area {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .user-area {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .user-area {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
 
         .user-welcome {
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 18px;
+            gap: 6px;
+            padding: 6px 14px;
             background: rgba(212, 175, 55, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.2);
             border-radius: 40px;
@@ -162,27 +230,43 @@ function convertirAEmbed($url) {
 
         .user-welcome i {
             color: #d4af37;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .user-welcome span {
             color: #fff;
             font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 480px) {
+            .user-welcome {
+                padding: 5px 12px;
+            }
+            
+            .user-welcome i {
+                font-size: 0.9rem;
+            }
+            
+            .user-welcome span {
+                font-size: 0.8rem;
+            }
         }
 
         .btn-golden {
             background: transparent;
             border: 2px solid #d4af37;
             color: #d4af37;
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            white-space: nowrap;
         }
 
         .btn-golden:hover {
@@ -202,17 +286,25 @@ function convertirAEmbed($url) {
             color: #0a0f1e;
         }
 
+        @media (max-width: 480px) {
+            .btn-golden {
+                padding: 5px 12px;
+                font-size: 0.8rem;
+            }
+        }
+
         /* ===== CARRUSEL AUTOMÁTICO ===== */
         .hero-section {
+            width: 100%;
             max-width: 1400px;
-            margin: 30px auto 50px;
-            padding: 0 30px;
+            margin: 20px auto 40px;
+            padding: 0 15px;
         }
 
         .hero-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -221,15 +313,29 @@ function convertirAEmbed($url) {
         .hero-title i {
             color: #d4af37;
             background: rgba(212, 175, 55, 0.1);
-            padding: 10px;
+            padding: 8px;
             border-radius: 50%;
+            font-size: 1.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.2rem;
+            }
         }
 
         .carousel-container {
             position: relative;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            width: 100%;
         }
 
         .carousel-slide {
@@ -250,20 +356,57 @@ function convertirAEmbed($url) {
             transform: scale(1.1);
         }
 
+        /* ===== RESPONSIVE CARRUSEL ===== */
+        @media (max-width: 1200px) {
+            .carousel-slide {
+                height: 450px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .carousel-slide {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-slide {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-slide {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-slide {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .carousel-slide {
+                height: 200px;
+            }
+        }
+
         .carousel-content {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 50px;
+            padding: 40px;
             background: linear-gradient(to top, rgba(10, 15, 30, 0.9), transparent);
             color: white;
         }
 
         .carousel-content h3 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: #d4af37;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
@@ -271,33 +414,83 @@ function convertirAEmbed($url) {
         .carousel-content p {
             font-size: 1rem;
             max-width: 600px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #e2e8f0;
         }
 
         .carousel-badge {
             display: inline-block;
-            padding: 5px 15px;
+            padding: 4px 12px;
             background: #d4af37;
             color: #0a0f1e;
             border-radius: 30px;
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-right: 10px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+        }
+
+        @media (max-width: 992px) {
+            .carousel-content {
+                padding: 30px;
+            }
+            
+            .carousel-content h3 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-content {
+                padding: 25px;
+            }
+            
+            .carousel-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .carousel-content p {
+                font-size: 0.9rem;
+                margin-bottom: 10px;
+            }
+            
+            .carousel-badge {
+                padding: 3px 10px;
+                font-size: 0.7rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .carousel-content {
+                padding: 20px;
+            }
+            
+            .carousel-content h3 {
+                font-size: 1.2rem;
+            }
+            
+            .carousel-content p {
+                font-size: 0.8rem;
+                display: none; /* Ocultar descripción en móviles muy pequeños */
+            }
+            
+            .carousel-badge {
+                padding: 2px 8px;
+                font-size: 0.65rem;
+            }
         }
 
         .carousel-indicators-custom {
             position: absolute;
-            bottom: 20px;
-            right: 30px;
+            bottom: 15px;
+            right: 20px;
             display: flex;
-            gap: 10px;
+            gap: 8px;
             z-index: 10;
         }
 
         .carousel-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.3);
             cursor: pointer;
@@ -309,59 +502,101 @@ function convertirAEmbed($url) {
             transform: scale(1.2);
         }
 
+        @media (max-width: 576px) {
+            .carousel-indicators-custom {
+                bottom: 10px;
+                right: 15px;
+                gap: 5px;
+            }
+            
+            .carousel-dot {
+                width: 8px;
+                height: 8px;
+            }
+        }
+
         /* ===== CATEGORÍAS ===== */
         .catalogo-section {
+            width: 100%;
             max-width: 1400px;
-            margin: 0 auto 50px;
-            padding: 0 30px;
+            margin: 0 auto 40px;
+            padding: 0 15px;
         }
 
         .categoria-contenedor {
-            margin-bottom: 50px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .categoria-contenedor {
+                margin-bottom: 30px;
+            }
         }
 
         .titulo-categoria {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            padding-left: 15px;
+            margin-bottom: 15px;
+            padding-left: 12px;
             border-left: 4px solid #d4af37;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .titulo-categoria i {
             color: #d4af37;
+            font-size: 1.2rem;
         }
 
+        @media (max-width: 768px) {
+            .titulo-categoria {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .titulo-categoria {
+                font-size: 1.1rem;
+                padding-left: 8px;
+            }
+            
+            .titulo-categoria i {
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== FILA DE PELÍCULAS CON SCROLL MEJORADO ===== */
         .fila-genero {
             display: flex;
             overflow-x: auto;
-            gap: 20px;
-            padding: 10px 0 20px;
+            gap: 15px;
+            padding: 10px 0 15px;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 rgba(212, 175, 55, 0.1);
         }
 
         .fila-genero::-webkit-scrollbar {
-            height: 8px;
+            height: 6px;
         }
 
         .fila-genero::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(212, 175, 55, 0.1);
             border-radius: 10px;
         }
 
         .fila-genero::-webkit-scrollbar-thumb {
-            background: rgba(212, 175, 55, 0.3);
+            background: #d4af37;
             border-radius: 10px;
         }
 
         .fila-genero::-webkit-scrollbar-thumb:hover {
-            background: #d4af37;
+            background: #f5d742;
         }
 
+        /* ===== TARJETAS CON TAMAÑOS RESPONSIVE ===== */
         .tarjeta-carrusel {
             flex: 0 0 auto;
             width: 200px;
@@ -374,7 +609,7 @@ function convertirAEmbed($url) {
         }
 
         .tarjeta-carrusel:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-8px) scale(1.03);
             border-color: #d4af37;
             box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
         }
@@ -391,11 +626,11 @@ function convertirAEmbed($url) {
         }
 
         .card-body {
-            padding: 15px;
+            padding: 12px;
         }
 
         .card-title {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 600;
             color: #fff;
             margin: 0;
@@ -404,22 +639,101 @@ function convertirAEmbed($url) {
             text-overflow: ellipsis;
         }
 
+        /* ===== RESPONSIVE TARJETAS ===== */
+        @media (max-width: 1200px) {
+            .tarjeta-carrusel {
+                width: 180px;
+            }
+            
+            .poster {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .tarjeta-carrusel {
+                width: 170px;
+            }
+            
+            .poster {
+                height: 230px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tarjeta-carrusel {
+                width: 160px;
+            }
+            
+            .poster {
+                height: 210px;
+            }
+            
+            .card-title {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .tarjeta-carrusel {
+                width: 150px;
+            }
+            
+            .poster {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tarjeta-carrusel {
+                width: 140px;
+            }
+            
+            .poster {
+                height: 180px;
+            }
+            
+            .card-body {
+                padding: 8px;
+            }
+            
+            .card-title {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .tarjeta-carrusel {
+                width: 120px;
+            }
+            
+            .poster {
+                height: 150px;
+            }
+            
+            .card-title {
+                font-size: 0.7rem;
+            }
+        }
+
         /* ===== MODAL ===== */
         .modal-golden .modal-content {
             background: #1a1f2e;
             border: 2px solid #d4af37;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
+            margin: 15px;
         }
 
         .modal-golden .modal-header {
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 20px 25px;
+            padding: 15px 20px;
         }
 
         .modal-golden .modal-title {
             color: #d4af37;
             font-weight: 700;
+            font-size: 1.1rem;
         }
 
         .modal-golden .btn-close {
@@ -427,94 +741,102 @@ function convertirAEmbed($url) {
         }
 
         .modal-golden .modal-body {
-            padding: 25px;
+            padding: 20px;
+        }
+
+        @media (max-width: 576px) {
+            .modal-golden .modal-header {
+                padding: 12px 15px;
+            }
+            
+            .modal-golden .modal-title {
+                font-size: 1rem;
+            }
+            
+            .modal-golden .modal-body {
+                padding: 15px;
+            }
         }
 
         .video-container {
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .info-detalles {
-            padding: 20px;
+            padding: 15px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 12px;
+            border-radius: 10px;
         }
 
         .etiqueta-gris {
             color: #8a909e;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 576px) {
+            .info-detalles {
+                padding: 12px;
+            }
+            
+            .etiqueta-gris {
+                font-size: 0.8rem;
+            }
+            
+            #modalDescripcion {
+                font-size: 0.85rem;
+            }
+            
+            #modalTitulo {
+                font-size: 1.2rem;
+            }
         }
 
         /* ===== MENSAJES ===== */
         .mensaje-resultados {
             text-align: center;
-            padding: 60px 20px;
+            padding: 40px 15px;
             background: rgba(26, 31, 46, 0.5);
-            border-radius: 20px;
+            border-radius: 16px;
             border: 1px solid rgba(212, 175, 55, 0.2);
+            margin: 20px 0;
         }
 
         .mensaje-resultados i {
-            font-size: 4rem;
+            font-size: 3rem;
             color: #d4af37;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .mensaje-resultados h3 {
             color: #fff;
             margin-bottom: 10px;
+            font-size: 1.3rem;
         }
 
         .mensaje-resultados p {
             color: #8a909e;
+            font-size: 0.9rem;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 992px) {
-            .navbar-content {
-                flex-direction: column;
-                height: auto;
-                padding: 15px 0;
-                gap: 15px;
+        @media (max-width: 576px) {
+            .mensaje-resultados {
+                padding: 30px 10px;
             }
             
-            .search-box {
-                width: 100%;
+            .mensaje-resultados i {
+                font-size: 2.5rem;
             }
             
-            .carousel-slide {
-                height: 400px;
+            .mensaje-resultados h3 {
+                font-size: 1.1rem;
             }
             
-            .carousel-content h3 {
-                font-size: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .user-area {
-                width: 100%;
-                justify-content: space-between;
-            }
-            
-            .carousel-slide {
-                height: 300px;
-            }
-            
-            .carousel-content {
-                padding: 30px;
-            }
-            
-            .carousel-content h3 {
-                font-size: 1.5rem;
-            }
-            
-            .carousel-content p {
-                font-size: 0.9rem;
+            .mensaje-resultados p {
+                font-size: 0.8rem;
             }
         }
     </style>
