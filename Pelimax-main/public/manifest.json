@@ -1,0 +1,11 @@
+{
+  "name": "Golden Cinema",
+  "short_name": "GoldenCinema",
+  "description": "Disfruta del mejor catalogo de peliculas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f1e",
+  "theme_color": "#d4af37",
+  "orientation": "portrait",
+  "icons": []
+}
